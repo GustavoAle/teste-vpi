@@ -1,5 +1,6 @@
-# teste-vpi
-Testes de integração entre Verilog HDL e C++
+# verilog-vpi-test
+Integration test between Verilog and C++ using VPI
 
-## Referências
+
+## References
 SUTHERLAND, Stuart. (2002). Verilog PLI Handbook (2nd ed.). Springer India.

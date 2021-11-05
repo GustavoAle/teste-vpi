@@ -39,6 +39,14 @@ public:
      */
     VPIHandle(vpiHandle nativeRef);
 
+
+    /**
+     * @brief Construct a new VPIHandle object
+     * from HDL object name
+     * @param name HDL object name
+     */
+    VPIHandle(const std::string &name);
+
     /**
      * @brief Obtain a handle to a iterator object
      * 

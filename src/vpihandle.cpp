@@ -1,4 +1,5 @@
 #include <vpi/vpihandle.hpp>
+#include <string>
 
 VPIHandle::VPIHandle(int type)
 {
@@ -14,6 +15,12 @@ VPIHandle::VPIHandle(vpiHandle nativeRef)
 : nativeHandle(nativeRef)
 {
 }
+
+VPIHandle::VPIHandle(const std::string &name)
+{
+    this->nativeHandle = vpi_handle_by_name(name.c_str(),NULL);
+}
+
 
 int VPIHandle::getIntValue()
 {

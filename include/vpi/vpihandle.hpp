@@ -13,6 +13,7 @@ class VPIHandle
 protected:
     vpiHandle nativeHandle;
     VPIHandle *iteratorHandle = NULL;
+    VPIHandle *lastScan = NULL;
 
 public:
     /**
@@ -51,7 +52,7 @@ public:
      * 
      * @return VPIHandle 
      */
-    VPIHandle scan();
+    VPIHandle &scan();
 
     /**
      * @brief Get the int value of object 
@@ -125,6 +126,8 @@ public:
      * @return false 
      */
     bool operator==(VPIHandle &ref);
+
+    ~VPIHandle();
 };
 
 inline VPIHandle &VPIHandle::iterate(int type)
@@ -135,9 +138,10 @@ inline VPIHandle &VPIHandle::iterate(int type)
     return *iteratorHandle;
 }
 
-inline VPIHandle VPIHandle::scan()
+inline VPIHandle &VPIHandle::scan()
 {
-    return VPIHandle(vpi_scan(this->nativeHandle));
+    lastScan = new VPIHandle(vpi_scan(this->nativeHandle));
+    return *lastScan;
 }
 
 inline vpiHandle VPIHandle::getNative()
